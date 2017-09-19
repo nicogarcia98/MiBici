@@ -1,0 +1,17 @@
+{
+    "name": "dagostinoips/mibici",
+    "require": {
+        "phpunit/phpunit": "^6.3"
+    },
+    "authors": [
+        {
+            "name": "Mariano D'Agostino",
+            "email": "dagostinoips@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mibici\\": "src"
+        }
+    }
+}
