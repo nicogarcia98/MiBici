@@ -28,8 +28,7 @@ class Estacion implements EstacionInterface {
     public function enServicio() {
         return TRUE;
     }
-    public function __construct($a,$b)
-    {
+    public function __construct($a,$b){
         $this->anclajeLibres=$a;
         $this->anclajeTotales=$b;
     }
