@@ -26,7 +26,7 @@ class Estacion implements EstacionInterface {
 
     public function bicicletasDisponibles() {
         
-        return count($this->Bicicletas);
+        return count($this->bicicletas);
     }
 
     public function enServicio() {
