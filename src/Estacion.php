@@ -3,12 +3,10 @@
 namespace Mibici;
 
 class Estacion implements EstacionInterface {
-
-
-
+    
     protected $anclajeLibres;
     protected $anclajeTotales;
-    public $Bicicletas = [];
+    public $bicicletas = [];
   
     public function sacarBici(BicicletaInterface $bici) {
     
@@ -27,8 +25,8 @@ class Estacion implements EstacionInterface {
     }
 
     public function bicicletasDisponibles() {
-        $Cantbicis = count($this->Bicicletas);
-        return $Cantbicis;
+        
+        return count($this->Bicicletas);
     }
 
     public function enServicio() {
