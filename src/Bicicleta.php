@@ -11,8 +11,8 @@ class Bicicleta implements BicicletaInterface{
         }
         return sprintf ("&04d",$patt);
     }
-    function __construct($pate){
-	$this->pat = patente($pate);
+    function __construct($paten){
+	$this->pat = patente($paten);
 
     }
 }
