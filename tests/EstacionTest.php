@@ -9,9 +9,11 @@ class EstacionTest extends TestCase {
     public function testEstacionEnServicio() {
         // Las estaciones nuevas siempre están en servicio.
         // Primero en el construct es anclajes disponibles y el segundo es anclajes totales
-        $estacion = new Estacion(10,18);
-        $this->assertEquals($estacion->anclajesDisponibles(),10);
-        $this->assertEquals($estacion->anclajesTotales(),18);
+        $anclajesdisp = 10;
+        $anclajestota = 18;
+        $estacion = new Estacion($anclajesdisp,$anclajestota);
+        $this->assertEquals($estacion->anclajesDisponibles(),$anclajesdisp);
+        $this->assertEquals($estacion->anclajesTotales(),$anclajestota);
         $this->assertTrue($estacion->enServicio());
     }
 
