@@ -27,11 +27,11 @@ class Estacion implements EstacionInterface {
     }
 
     public function bicicletasDisponibles() {
-        $patentes = [];
+        $Cantbicis = 0;
         foreach(Bicicletas as bici){
-           $patentes->append($bici->patente());
+           $Cantbicis++;
         }
-        return $patentes;
+        return $Cantbicis;
     }
 
     public function enServicio() {
