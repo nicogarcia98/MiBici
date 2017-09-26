@@ -27,10 +27,7 @@ class Estacion implements EstacionInterface {
     }
 
     public function bicicletasDisponibles() {
-        $Cantbicis = 0;
-        foreach($this->Bicicletas as bici){
-           $Cantbicis++;
-        }
+        $Cantbicis = count($this->Bicicletas);
         return $Cantbicis;
     }
 
