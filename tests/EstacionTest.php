@@ -13,7 +13,7 @@ class EstacionTest extends TestCase {
         $anclajestota = 18;
         $bicisdisponibles = 3;
         $estacion = new Estacion($anclajesdisp,$anclajestota);
-        $estacion->Bicicletas=["aaa","bbb","ccc"];
+        $estacion->bicicletas=["aaa","bbb","ccc"];
         $this->assertEquals($estacion->anclajesDisponibles(),$anclajesdisp);
         $this->assertEquals($estacion->anclajesTotales(),$anclajestota);
         $this->assertTrue($estacion->enServicio());
