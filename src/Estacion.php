@@ -4,12 +4,14 @@ namespace Mibici;
 
 class Estacion implements EstacionInterface {
 
+    protected Bicicletas = [];
+    
     public function sacarBici(BicicletaInterface $bici) {
 
     }
 
     public function dejarBici(BicicletaInterface $bici) {
-
+            
     }
 
     public function anclajesDisponibles() {
@@ -21,7 +23,11 @@ class Estacion implements EstacionInterface {
     }
 
     public function bicicletasDisponibles() {
-
+        $patentes = [];
+        foreach(Bicicletas as bici){
+           $patentes->append($bici->patente());
+        }
+        return $patentes;
     }
 
     public function enServicio() {
