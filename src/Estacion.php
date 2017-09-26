@@ -8,7 +8,7 @@ class Estacion implements EstacionInterface {
 
     protected $anclajeLibres;
     protected $anclajeTotales;
-    protected $Bicicletas = [];
+    public $Bicicletas = [];
   
     public function sacarBici(BicicletaInterface $bici) {
     
