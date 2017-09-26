@@ -4,7 +4,7 @@ namespace Mibici;
 
 class Estacion implements EstacionInterface {
 
-    protected Bicicletas = [];
+    protected $Bicicletas = [];
     
     public function sacarBici(BicicletaInterface $bici) {
 
