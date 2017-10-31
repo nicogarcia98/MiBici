@@ -8,6 +8,7 @@ class Tarjeta {
 	private $tras1=0;
 	private $trasbordo=0;
 	private $tarifa=9,7;
+	private $costo;
 	private $plus=0;
 	private $id;
 	private $linea;
@@ -17,7 +18,7 @@ public function __construct($id){
 	$this->id = $id;
 }
 
- public function pagarbus($fecha_y_hora, $medio, $linea, $idboleto){
+ public function pagarbus($fecha_y_hora, $medio, $linea){
  		$time1=strtotime($fecha_y_hora);
 		if((date('D')=='Sat' && date('h')<14 && date('h')>6) || ((date('D')!='Sun' && date('D')!='Sat') && date('h')<22 && date('h')>6))){
 			if(time()-$lastime <= 3600){
@@ -43,19 +44,19 @@ public function __construct($id){
 		if($medio==1){
 			if($this->trasbordo==1){
 				if($this->tarifa*0.5*0.33 <= $this->saldo){
-					$this->saldo=$this->saldo-$this->tarifa*0.5*0.33;
+					$this->costo=$this->tarifa*0.5*0.33;
+					$this->saldo=$this->saldo-$this->costo;
 					$this->tras1=1;
 					$this->lastime=$time1;
-					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 0, 1);
+					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 1, $this->id, $this->costo, $this->saldo);
 					$boleto->imprimir();
 					return;
 				}else{
 					if($this->plus<2){
 						$this->plus++;
-						echo "Plus " . $this->plus;
 						$this->tras1=0;
 						$this->lastime=$time1;
-						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 1, 0);
+						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 0, $this->id, $this->costo, $this->saldo);
 						$boleto->imprimir();
 						return;
 					}else{
@@ -65,10 +66,11 @@ public function __construct($id){
 				}
 			}else{
 				if($this->tarifa*0.5 <= $this->saldo){
-					$this->saldo=$this->saldo-$this->tarifa*0.5;
+					$this->costo=$this->tarifa*0.5;
+					$this->saldo=$this->saldo-$this->costo;
 					$this->lastime=$time1;
 					$this->tras1 = 0;
-					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 0, 1);
+					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 1, $this->id,$this->costo, $this->saldo);
 					$boleto->imprimir();
 					return;
 			}else{
@@ -76,7 +78,7 @@ public function __construct($id){
 					$this->lastime=$time1;
 					$this->plus++;
 					$this->tras1=0;
-					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 1, 0);
+					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 0, $this->id,$this->costo, $this->saldo);
 					$boleto->imprimir();
 					return;
 				}else{
@@ -89,19 +91,19 @@ public function __construct($id){
 		}else{
 			if($this->trasbordo==1){
 				if($this->tarifa*0.33 <= $this->saldo){
-					$this->saldo=$this->saldo-$this->tarifa*0.33;
+					$this->costo=$this->tarifa*0.33;
+					$this->saldo=$this->saldo-$this->costo;
 					$this->tras1=1;
 					$this->lastime=$time1;
-					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 0, 0);
+					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 0, $this->id,$this->costo, $this->saldo);
 					$boleto->imprimir();
 					return;
 				}else{
 					if($this->plus<2){
 						$this->plus++;
-						echo "Plus " . $this->plus;
 						$this->lastime=$time1;
 						$this->tras1=0;
-						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 1, 0);
+						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 0, $this->id,$this->costo, $this->saldo);
 						$boleto->imprimir();
 						return;
 					}else{
@@ -111,19 +113,19 @@ public function __construct($id){
 				}
 				}else{
 				if($this->tarifa <= $this->saldo){
-					$this->saldo=$this->saldo-$this->tarifa;
+					$this->costo=$this->tarifa;
+					$this->saldo=$this->saldo-$this->costo;
 					$this->lastime=$time1;
 					$this->tras1=0;
-					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 0, 0);
+					$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 0, $this->id,$this->costo, $this->saldo);
 					$boleto->imprimir();
 					return;
 				}else{
 					if($this->plus<2){
 						$this->plus++;
-						echo "Plus " . $this->plus;
 						$this->tras1=0;
 						$this->lastime=$time1;
-						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, 1, 0);
+						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, 0, $this->id,$this->costo, $this->saldo);
 						$boleto->imprimir();
 						return;
 					}else{
