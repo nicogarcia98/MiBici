@@ -38,13 +38,14 @@ class boleto{
 		echo "Trasbordo";
 		}
 		if($this->medio == 1){
-		echo "Medio"
+		echo "Medio";
 		}
 		if($this->medio == 0 && $this->trasbordo==0 && $this->plus==0){
 		echo "Normal";
 		}
 		echo $this->ID;
 		echo $this->saldo;
+		
 		
 	}
 }
