@@ -1,17 +1,11 @@
 {
-    "name": "dagostinoips/mibici",
-    "require": {
-        "phpunit/phpunit": "^6.3"
+    "require-dev": {
+        "phpunit/phpunit": "^6.3",
+        "satooshi/php-coveralls": "^1.0"
     },
-    "authors": [
-        {
-            "name": "Mariano D'Agostino",
-            "email": "dagostinoips@gmail.com"
-        }
-    ],
     "autoload": {
         "psr-4": {
-            "Mibici\\": "src"
+            "TpFinal\\": "src"
         }
     }
 }
