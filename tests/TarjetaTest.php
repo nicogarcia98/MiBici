@@ -25,7 +25,7 @@ class EstacionTest extends TestCase {
     }
     public function testTrasbordo(){
         $tarjeta = new Tarjeta(1234, 0);
-        $tarjeta->recargar(30);
+        $tarjeta->recargar(50);
         $colectivo = new Colectivo ("133 negro");
         $tarjeta->pagarbus(time(),0,$colectivo);
         $this->assertEquals($tarjeta->getSaldo(),20.30);
