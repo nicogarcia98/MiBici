@@ -1,7 +1,9 @@
-
 <?php
+
 namespace MiBici;
+
 use PHPUnit\Framework\TestCase;
+
 class EstacionTest extends TestCase {
     /**
      * Comprueba que el saldo de una tarjeta nueva sea cero.
