@@ -1,18 +1,14 @@
 <?php
 
-namespace Mibici;
-
-class Bicicleta implements BicicletaInterface{
-    protected $pat = -1;
-    public function patente($patt){
-        
-	if($patt < 10000){
-	    $patt++;
-        }
-        return sprintf ("&04d",$patt);
+namespace MiBici;
+class Bicicleta {
+    private $pat;
+    
+    public function get_pat() {
+        return $this->pat;
     }
-    function __construct($paten){
-	$this->pat = patente($paten);
 
+    public function __construct ($patente) {
+        $this->pat = $patente;
     }
 }
