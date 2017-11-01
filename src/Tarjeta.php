@@ -21,16 +21,24 @@ public function __construct($id){
 }
 
 public function pagarbici($fecha_y_hora, $paten){
-	$time1=strtotime($fecha_y_hora);
+	$this->time1=strtotime($fecha_y_hora);
 	if($this->lastbici-$this->$time1>3600){
-		$this->saldo= $this->saldo - $this->tarifa* 1.5;
+		$this->costo= $this->tarifa * 1.5;
+		$this->saldo= $this->saldo - $this->costo;
+		$this->lastbici=$this->time1;
+		$boleto= new boleto(0, $fecha_y_hora, $paten,0,0, $this->id,$this->costo, $this->saldo, 0);
+		array_push($viajes, $boleto);
+		return;
+	}else{
+		$boleto= new boleto(0, $fecha_y_hora, $paten,0,0, $this->id,$this->costo, $this->saldo, 0);
+		array_push($viajes, $boleto);
 	}
 	
-
+	
 }
  public function pagarbus($fecha_y_hora, $medio, $linea){
  		$this->time1=strtotime($fecha_y_hora);
-		if((date('D', $this->time1)=='Sat' && date('h', $this->time1)<=14 && date('h', $this->time1)>=6) || ((date('D', $this->time1)!='Sun' && date('D', $this->time1)!='Sat') && date('h', $this->time1)<=22 && date('h', $this->time1)>=6))){
+		if((date('D', $this->time1)=='Sat' && date('h', $this->time1)<=14 && date('h', $this->time1)>=6) || ((date('D', $this->time1)!='Sun' && date('D', $this->time1)!='Sat') && date('h', $this->time1)<=22 && date('h', $this->time1)>=6)){
 			if($this->time1-$this->lastime <= 3600){
 				$this->trasbordo=1;				
 			}else{
@@ -40,7 +48,7 @@ public function pagarbici($fecha_y_hora, $paten){
 			if($this->time1-$this->lastime <= 5400){
 				$this->trasbordo=1;
 			}		
-		}else{
+		else{
 			$this->trasbordo=0;
 		}	
 	
@@ -49,7 +57,7 @@ public function pagarbici($fecha_y_hora, $paten){
 			if($this->tras1 == 1){
 			$this->trasbordo=0;		
 		}
-
+		}
 
 		$this->costo=$this->tarifa;
 		if($medio==1){
@@ -75,7 +83,7 @@ public function pagarbici($fecha_y_hora, $paten){
 			if($this->costo <= $this->saldo ){
 				$this->saldo=$this->saldo-$this->costo;
 				$this->lastime=$time1;
-				$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, $medio, $this->id,$this->costo, $this->saldo);
+				$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, $medio, $this->id,$this->costo, $this->saldo, 1);
 				array_push($viajes, $boleto);
 				$boleto->imprimir();
 				return;
@@ -84,7 +92,7 @@ public function pagarbici($fecha_y_hora, $paten){
 						$this->plus++;
 						$this->tras1=0;
 						$this->lastime=$time1;
-						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, $medio, $this->id, 0, $this->saldo);
+						$boleto= new boleto($this->tras1, $this->lastime, $this->linea, $this->plus, $medio, $this->id, 0, $this->saldo, 1);
 						array_push($viajes, $boleto);
 						$boleto->imprimir();
 						return;
@@ -95,7 +103,7 @@ public function pagarbici($fecha_y_hora, $paten){
 			}	
 	}
 
-
+ 
  public function recargar($monto){
  	if($monto==332){
  		$this->saldo=$this->saldo + 388;
@@ -109,7 +117,7 @@ public function pagarbici($fecha_y_hora, $paten){
  	return;
 
  }
-public function viajesRealizados();
+public function viajesRealizados(){
 	for($i=0;$i<count($viajes);$i++){
 		$viajes[$i]->imprimir();
 	}
