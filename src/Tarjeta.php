@@ -4,6 +4,7 @@ namespace MiBici;
 
 class Tarjeta {
 	private $medio=0;
+	private $med;
 	private $saldo=0;
 	private $lastime=0;
 	private $tras1=0;
@@ -42,6 +43,7 @@ public function pagarbici($fecha_y_hora, Bicicleta $paten){
 }
  public function pagarbus($fecha_y_hora, $medio, Colectivo $linea){
  		$this->time1=strtotime($fecha_y_hora);
+	 	$this->med = $medio;
 		if((date('D', $this->time1)=='Sat' && date('h', $this->time1)<=14 && date('h', $this->time1)>=6) || ((date('D', $this->time1)!='Sun' && date('D', $this->time1)!='Sat') && date('h', $this->time1)<=22 && date('h', $this->time1)>=6)){
 			if($this->time1-$this->lastime <= 3600){
 				$this->trasbordo=1;				
@@ -115,7 +117,7 @@ public function getCosto(){
 }
 
 public function getTipo(){
-	if($this->medio == 1 && $medio == 1){
+	if($this->medio == 1 && $this->med == 1){
 		return "Medio";
 	}
 	return "Normal";
