@@ -30,34 +30,33 @@ class boleto{
 		}
 	public function imprimir(){
 		if($this->bob==1){
-			echo date("d-m-Y H:i:s", $fecha);
-			echo "Linea " . $this->linea;
-			echo $this->tarifa;
+			echo date("d-m-Y H:i:s", $this->fecha);
+			echo "Linea " . $this->lineaopat;
+			echo "  " . $this->tarifa;
 			if($this->plus > 0){
-				echo "Plus " . $this->plus;
+				echo " Plus " . $this->plus;
 			}
 			if($this->trasbordo==1){
-			echo "Trasbordo";
+			echo " Trasbordo ";
 			}
 			if($this->medio == 1){
-			echo "Medio";
+			echo " Medio ";
 			}
 			if($this->medio == 0 && $this->trasbordo==0 && $this->plus==0){
-			echo "Normal";
+			echo " Normal ";
 			}
-			echo $this->ID;
-			echo $this->saldo;
+			echo $this->ID . " ";
+			echo $this->saldo . "<br>";
 		}else{
 			echo "Viaje en la bici ";
-			echo "Patente " . $this->lineaopat;
-			echo "el dia ";
+			echo " Patente " . $this->lineaopat;
+			echo " el dia ";
 			echo date("d-m-Y H:i:s", $fecha);
 			echo $this->tarifa;
 			echo $this->ID;
-			echo $this->saldo;
+			echo $this->saldo . "<br>";
 		}
-		
+	
 		
 	}
 }
-
