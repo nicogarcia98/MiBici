@@ -56,7 +56,7 @@ class EstacionTest extends TestCase {
         $this->assertEquals($tarjeta->getSaldo(),37.1);
         
     }
-        public function testGet(){
+    public function testGet(){
         $tarjeta = new Tarjeta(1234, 0);
         $tarjeta->recargar(40);
         $colectivo = new Colectivo ("133 negro");
@@ -67,7 +67,15 @@ class EstacionTest extends TestCase {
         $this->assertEquals($tarjeta->getFecha(),"03/09/2017 23:54:00");
     
         }
-    
+     public function testBici(){
+        $bici = new Bicicleta(1234);
+        $tarjeta= new Tarjeta(3423, 0)
+        $tarjeta->recargar(30);
+        $tarjeta->pagarbici("2017/09/03 23:54",$bici);
+        $this->assertEquals($tarjeta->getSaldo(),15.45);
+        $tarjeta->pagarbici("2017/09/04 13:34",$bici);
+        $this->assertEquals($tarjeta->getSaldo(),15.45);
+     }
                
 }                               
                                
