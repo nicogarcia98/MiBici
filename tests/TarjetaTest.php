@@ -93,6 +93,24 @@ class EstacionTest extends TestCase {
         $tarjeta->pagarbici("2017/09/04 13:34",$bici);
         $this->assertEquals($tarjeta->getSaldo(),15.45);
      }
+
+	public function testReali(){
+        	$bici = new Bicicleta(9797);
+    	    	$tarjeta = new Tarjeta(1234, 0);
+    	    	$tarjeta->recargar(40);
+     	  	$colectivo = new Colectivo ("122 verde");
+     	   	$tarjeta->pagarbus("2013/09/03 20:54",0,$colectivo);
+		$tarjeta->pagarbici("2017/10/03 19:54",$bici);
+		$lista = $this->tarjeta->viajesRealizados();
+        	$this->assertEquals($lista[0]->getTipo(),"Normal");
+        	$this->assertEquals($lista[0]->getCosto(),9.75);
+       		$this->assertEquals($lista[0]->getTrans(),"122 verde");
+      		$this->assertEquals($lista[0]->getFecha(),"03-09-2013 20:54:00");
+        	$this->assertEquals($lista[1]->getCosto(),14.55);
+       		$this->assertEquals($lista[1]->getTrans(),"Bicicleta " . 9797);
+      		$this->assertEquals($lista[1]->getFecha(),"03-10-2017 19:54:00");
+	
+	}
                
 }                               
-                               
+                              
