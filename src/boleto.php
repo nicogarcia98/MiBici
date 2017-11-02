@@ -59,4 +59,36 @@ class boleto{
 	
 		
 	}
+	
+	public function getTrans(){
+		if($this->bob==1){
+			return $this->lineaopat;
+		}
+		return "Bicicleta " $this->lineaopat;
+	}
+	
+	public function getSaldo(){
+		return $this->saldo;
+	}
+	
+	public function getCosto(){
+		return $this->tarifa;
+	}
+	public function getTipo(){
+		if($this->medio == 1){
+			if($this->trasbordo == 1){
+				return "Medio y Trasbordo";
+			}
+			return "Medio";
+		}
+		if($this->trasbordo == 1){
+			return "Trasbordo";
+		}
+		return "Normal";
+	}
+		
+	public function getFecha(){
+		return date("d-m-Y H:i:s",$this->fecha);
+	}
+
 }
