@@ -56,11 +56,11 @@ public function pagarbici($fecha_y_hora, Bicicleta $paten){
 			$this->trasbordo=0;
 		}	
 	
-
+		}
 
 			if($this->tras1 == 1){
 			$this->trasbordo=0;		
-		}
+		
 		}
 
 		$this->costo=$this->tarifa;
