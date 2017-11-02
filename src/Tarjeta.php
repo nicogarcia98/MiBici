@@ -135,7 +135,7 @@ public function getFecha(){
  }
 public function viajesRealizados(){
 	for($i=0;$i<count($viajes);$i++){
-		$viajes[$i]->imprimir();
+		$this->viajes[$i]->imprimir();
 	}
 }
 }
