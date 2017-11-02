@@ -64,7 +64,7 @@ class EstacionTest extends TestCase {
         $this->assertEquals($tarjeta->getCosto(),9.7);
         $this->assertEquals($tarjeta->getID(),1234);
         $this->assertEquals($tarjeta->getTipo(),"Normal");
-        $this->assertEquals($tarjeta->getFecha(),"03/09/2017 23:54:00");
+        $this->assertEquals($tarjeta->getFecha(),"03-09-2017 23:54:00");
     
         }
      public function testBici(){
