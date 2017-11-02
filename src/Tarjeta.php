@@ -108,12 +108,14 @@ public function getSaldo(){
 public function getCosto(){
 	return $this->costo;
 }
+	
 public function getTipo(){
 	if($this->medio == 1){
 		return "Medio";
 	}
 	return "Normal";
 }
+
 	
 public function getID(){
 	return $this->id;	
@@ -134,8 +136,9 @@ public function getFecha(){
  	return;
  }
 public function viajesRealizados(){
-	for($i=0;$i<count($viajes);$i++){
+	for($i=0;$i<count($this->viajes);$i++){
 		$this->viajes[$i]->imprimir();
 	}
+	return $this->viajes;
 }
 }
