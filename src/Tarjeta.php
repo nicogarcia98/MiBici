@@ -25,7 +25,7 @@ public function __construct($id, $medio){
 }
 public function pagarbici($fecha_y_hora, Bicicleta $paten){
 	$this->time1=strtotime($fecha_y_hora);
-	if($this->lastbici-$this->$time1>86400){
+	if($this->lastbici-$this->time1>86400){
 		$this->costo= $this->tarifa * 1.5;
 		$this->saldo= $this->saldo - $this->costo;
 		$this->lastbici=$this->time1;
@@ -90,7 +90,7 @@ public function pagarbici($fecha_y_hora, Bicicleta $paten){
 				if($this->plus<2){
 						$this->plus++;
 						$this->tras1=0;
-						$this->lastime=$time1;
+						$this->lastime=$this->time1;
 						$boleto= new boleto($this->tras1, $this->lastime, $linea->get_linea(), $this->plus, $medio, $this->id, 0, $this->saldo, 1);
 						array_push($viajes, $boleto);
 						$boleto->imprimir();
