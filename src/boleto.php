@@ -64,7 +64,7 @@ class boleto{
 		if($this->bob==1){
 			return $this->lineaopat;
 		}
-		return "Bicicleta " $this->lineaopat;
+		return "Bicicleta " . $this->lineaopat;
 	}
 	
 	public function getSaldo(){
