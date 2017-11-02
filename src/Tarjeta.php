@@ -2,6 +2,7 @@
 
 namespace MiBici;
 
+
 class Tarjeta {
 	private $medio=0;
 	private $saldo=0;
@@ -22,7 +23,6 @@ public function __construct($id, $medio){
 	$this->medio=$medio;
 	
 }
-
 public function pagarbici($fecha_y_hora, Bicicleta $paten){
 	$this->time1=strtotime($fecha_y_hora);
 	if($this->lastbici-$this->$time1>3600){
@@ -57,12 +57,10 @@ public function pagarbici($fecha_y_hora, Bicicleta $paten){
 		}	
 	
 		}
-
 			if($this->tras1 == 1){
 			$this->trasbordo=0;		
 		
 		}
-
 		$this->costo=$this->tarifa;
 		if($medio==1 && $this->medio==1){
 			$this->costo=round($this->costo * 0.5,2);
@@ -73,22 +71,19 @@ public function pagarbici($fecha_y_hora, Bicicleta $paten){
 		}else{
 			$this->tras1=0;
 		}
-
-		if($this->plus > 0 && $this->saldo >= $this->costo + $this->tarifa * $this->plus){
+		if($this->plus > 0){
 			$this->costo=$this->costo + $this->tarifa * $this->plus;
 			$this->plus=0;
-		}else{
-			if($this->plus==1){
-			}else{
-			echo "Saldo insuficiente";
-			return;
-			}
 		}
+		
 			if($this->costo <= $this->saldo ){
 				$this->saldo=$this->saldo-$this->costo;
-				$this->lastime=$time1;
+				if($this->costo > $this->tarifa){
+					$this->plus=0;
+				}
+				$this->lastime=$this->time1;
 				$boleto= new boleto($this->tras1, $this->lastime, $linea->get_linea(), $this->plus, $medio, $this->id,$this->costo, $this->saldo, 1);
-				array_push($viajes, $boleto);
+				array_push($this->viajes, $boleto);
 				$boleto->imprimir();
 				return;
 			}else{		
@@ -113,7 +108,6 @@ public function getSaldo(){
 public function getCosto(){
 	return $this->costo;
 }
-
 public function getTipo(){
 	if($this->medio == 1){
 		return "Medio";
@@ -138,7 +132,6 @@ public function getFecha(){
  	}
  	$this->saldo=$this->saldo + $monto;
  	return;
-
  }
 public function viajesRealizados(){
 	for($i=0;$i<count($viajes);$i++){
@@ -146,5 +139,3 @@ public function viajesRealizados(){
 	}
 }
 }
-
-
