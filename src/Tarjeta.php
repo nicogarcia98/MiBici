@@ -73,7 +73,6 @@ public function pagarbici($fecha_y_hora, Bicicleta $paten){
 		}
 		if($this->plus > 0){
 			$this->costo=$this->costo + $this->tarifa * $this->plus;
-			$this->plus=0;
 		}
 		
 			if($this->costo <= $this->saldo ){
