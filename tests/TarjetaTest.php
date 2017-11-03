@@ -108,17 +108,32 @@ class EstacionTest extends TestCase {
        		$this->assertEquals($lista[1]->getTrans(),"122 verde");
       		$this->assertEquals($lista[1]->getFecha(),"03-09-2013 20:54:00");
 		$this->assertEquals($lista[1]->getSaldo(),75.75);
-		$tarjeta->pagarbus("2013/09/03 21:04",1,$colectivo);
-		$this->assertEquals($lista[2]->getTipo(),"Medio y Trasbordo");
         	$this->assertEquals($lista[0]->getCosto(),14.55);
-		$tarjeta->pagarbus("2013/11/03 21:04",1,$colectivo);
-		$this->assertEquals($lista[3]->getTipo(),"Medio");
-		$tarjeta->pagarbus("2013/11/03 21:34",0,$colectivo);
-		$this->assertEquals($lista[4]->getTipo(),"Trasbordo");
        		$this->assertEquals($lista[0]->getTrans(),"Bicicleta " . 9797);
       		$this->assertEquals($lista[0]->getFecha(),"03-08-2017 19:54:00");
 	
 	}
+	public function testViajeMedio(){
+        $tarjeta= new Tarjeta(3423, 0);
+	$colectivo = new Colectivo ("122 verde");
+        $tarjeta->recargar(30);
+	$tarjeta->pagarbus("2013/09/03 20:54",1,$colectivo);
+	$tarjeta->pagarbus("2013/09/03 21:20",1,$colectivo);
+	$lista = $tarjeta->viajesRealizados();
+	$this->assertEquals($lista[0]->getTipo(),"Medio");
+	$this->assertEquals($lista[1]->getTipo(),"Medio y trasbordo");	
+     }
+	public function testViajeTrasbordo(){
+        $tarjeta= new Tarjeta(3423, 0);
+	$colectivo = new Colectivo ("122 verde");
+        $tarjeta->recargar(30);
+	$tarjeta->pagarbus("2013/09/03 20:54",0,$colectivo);
+	$tarjeta->pagarbus("2013/09/03 21:20",0,$colectivo);
+	$lista = $tarjeta->viajesRealizados();
+	$this->assertEquals($lista[0]->getTipo(),"Normal");
+	$this->assertEquals($lista[1]->getTipo(),"Trasbordo");	
+     }
+	
                
 }                               
                               
