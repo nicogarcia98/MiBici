@@ -42,7 +42,7 @@ class EstacionTest extends TestCase {
         $tarjeta->pagarbus("2017/09/03 13:40",1,$colectivo);
 		$this->assertEquals($tarjeta->getSaldo(),45.15);
         $tarjeta->pagarbus("2017/09/03 14:12",1,$colectivo);
-    	$this->assertEquals($tarjeta->getSaldo(),43.55);       
+    	$this->assertEquals($tarjeta->getSaldo(),40.3);       
     }
     
     public function testTrasbordo(){
