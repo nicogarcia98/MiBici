@@ -104,7 +104,7 @@ class EstacionTest extends TestCase {
 		$tarjeta->pagarbici("2017/10/03 19:54",$bici);
 		$lista = $tarjeta->viajesRealizados();
         	$this->assertEquals($lista[0]->getTipo(),"Normal");
-        	$this->assertEquals($lista[0]->getCosto(),9.75);
+        	$this->assertEquals($lista[0]->getCosto(),9.7);
        		$this->assertEquals($lista[0]->getTrans(),"122 verde");
       		$this->assertEquals($lista[0]->getFecha(),"03-09-2013 20:54:00");
         	$this->assertEquals($lista[1]->getCosto(),14.55);
