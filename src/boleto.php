@@ -51,7 +51,7 @@ class boleto{
 			echo "Viaje en la bici ";
 			echo " Patente " . $this->lineaopat;
 			echo " el dia ";
-			echo $this->fecha;
+			echo date("d-m-Y H:i:s", $this->fecha)
 			echo $this->tarifa;
 			echo $this->ID;
 			echo $this->saldo . "<br>";
