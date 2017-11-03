@@ -29,11 +29,11 @@ public function pagarbici($fecha_y_hora, Bicicleta $paten){
 		$this->costo= $this->tarifa * 1.5;
 		$this->saldo= $this->saldo - $this->costo;
 		$this->lastbici=$this->time1;
-		$boleto= new boleto(0, $fecha_y_hora, $paten->get_pat(),0,0, $this->id,$this->costo, $this->saldo, 0);
+		$boleto= new boleto(0, $this->time1, $paten->get_pat(),0,0, $this->id,$this->costo, $this->saldo, 0);
 		array_push($this->viajes, $boleto);
 		return;
 	}else{
-		$boleto= new boleto(0, $fecha_y_hora, $paten->get_pat(),0,0, $this->id,$this->costo, $this->saldo, 0);
+		$boleto= new boleto(0, $this->time1, $paten->get_pat(),0,0, $this->id,$this->costo, $this->saldo, 0);
 		array_push($this->viajes, $boleto);
 		return;
 	}
