@@ -25,7 +25,7 @@ public function __construct($id, $medio){
 }
 public function pagarbici($fecha_y_hora, Bicicleta $paten){
 	$this->time1=strtotime($fecha_y_hora);
-	if($this->lastbici-$this->time1>86400){
+	if($this->time1-$this->lastbici>86400){
 		$this->costo= $this->tarifa * 1.5;
 		$this->saldo= $this->saldo - $this->costo;
 		$this->lastbici=$this->time1;
