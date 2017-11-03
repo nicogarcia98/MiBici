@@ -67,6 +67,7 @@ class EstacionTest extends TestCase {
         $tarjeta->pagarbus("2017/09/03 17:52",0,$colectivo);
         $this->assertEquals($tarjeta->getSaldo(),0.3);
         $tarjeta->recargar(30);
+	$this->assertEquals($tarjeta->getSaldo(),30.3);
         $tarjeta->pagarbus("2017/09/03 23:32",0,$colectivo);
         $this->assertEquals($tarjeta->getSaldo(),1.2);
         $tarjeta->pagarbus("2017/09/04 11:47",0,$colectivo);
